@@ -1,3 +1,4 @@
+from numpy import true_divide
 from utility import matrix_to_list, get_position_of_number
 
 def get_empty_cell_idx(fifteen_puzzle):
@@ -28,3 +29,9 @@ def sum_of_less_than(fifteen_puzzle):
 
 def sum_of_less_than_plus_x(fifteen_puzzle):
     return sum_of_less_than(fifteen_puzzle) + x_value(fifteen_puzzle)
+
+def is_reachable(fifteen_puzzle):
+    if(sum_of_less_than_plus_x(fifteen_puzzle) % 2 == 0):
+        return True
+    else:
+        return False
