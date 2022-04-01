@@ -1,7 +1,7 @@
 import imp
 from convertfile import convert_file_to_int_matrix
 from readfile import read_file
-from bnb import procedure_bnb
+from output import game_output
 
 def main():
 
@@ -14,4 +14,4 @@ def main():
         exit()
 
     fifteen_puzzle = convert_file_to_int_matrix(fifteen_puzzle_in_file)
-    procedure_bnb(fifteen_puzzle)
+    game_output(fifteen_puzzle)
