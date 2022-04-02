@@ -49,3 +49,14 @@ def move_right(fifteen_puzzle):
     set_element_in_position(result_i, result_j, fp_move, tmp)
     return fp_move
 
+def is_enable_to_move_up(fifteen_puzzle):
+    return get_empty_cell_idx(fifteen_puzzle)[0] > 0
+
+def is_enable_to_move_down(fifteen_puzzle):
+    return get_empty_cell_idx(fifteen_puzzle)[0] < 3
+
+def is_enable_to_move_right(fifteen_puzzle):
+    return get_empty_cell_idx(fifteen_puzzle)[1] < 3
+
+def is_enable_to_move_left(fifteen_puzzle):
+    return get_empty_cell_idx(fifteen_puzzle)[0] > 0

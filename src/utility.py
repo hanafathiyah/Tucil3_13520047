@@ -38,3 +38,13 @@ def print_matrix(fifteen_puzzle):
         for j in range(4):
             print(fifteen_puzzle[i][j], end = " ")
         print("")
+
+def is_a_result(fifteen_puzzle):
+    i = 0
+    same = True
+    while i < 16 and same:
+        if(matrix_to_list(fifteen_puzzle)[i] != i+1):
+            same = False
+        else:
+            i += 1
+    return same
