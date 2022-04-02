@@ -26,6 +26,13 @@ def get_empty_cell_idx(fifteen_puzzle):
             if fifteen_puzzle[i][j] == 16:
                 return i,j
 
+def copy_matrix(fifteen_puzzle):
+    result = [[0 for _ in range(4)] for _ in range(4)]
+    for i in range(4):
+        for j in range(4):
+            result[i][j] = fifteen_puzzle[i][j]
+    return result
+
 def print_matrix(fifteen_puzzle):
     for i in range(4):
         for j in range(4):
