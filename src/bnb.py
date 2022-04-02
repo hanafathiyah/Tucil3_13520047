@@ -1,7 +1,8 @@
 import imp
+from turtle import left
 from unittest import result
-from utility import get_element_from_position, get_empty_cell_idx, matrix_to_list, set_element_in_position, print_matrix
-from movematrix import move_up
+from utility import matrix_to_list, print_matrix
+from movematrix import move_left, move_right, move_up, move_down
 
 def count_g(fifteen_puzzle):
     cnt = 0
@@ -11,6 +12,15 @@ def count_g(fifteen_puzzle):
         return cnt
 
 def procedure_bnb(fifteen_puzzle):
-    result = move_up(fifteen_puzzle)
-    print_matrix(result)
+    up = move_up(fifteen_puzzle)
+    print_matrix(up)
+    print()
+    left = move_left(fifteen_puzzle)
+    print_matrix(left)
+    print()
+    right = move_right(fifteen_puzzle)
+    print_matrix(right)
+    print()
+    down = move_down(fifteen_puzzle)
+    print_matrix(down)
     print("Hello World")
