@@ -1,11 +1,5 @@
 from numpy import true_divide
-from utility import matrix_to_list, get_position_of_number
-
-def get_empty_cell_idx(fifteen_puzzle):
-    for i in range(4):
-        for j in range(4):
-            if fifteen_puzzle[i][j] == 16:
-                return i,j
+from utility import matrix_to_list, get_position_of_number, get_empty_cell_idx
 
 # find x value
 def x_value(fifteen_puzzle):
