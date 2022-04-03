@@ -1,12 +1,10 @@
 from operator import le
 
-from bnb import count_g
+#from bnb import count_g
 
 class NodePuzzle:
-    def __init__(self, node_number, info, parent, depth):
-        self.node_number = node_number
+    def __init__(self, info, parent = None, depth = 0, move = ""):
         self.info = info
         self.parent = parent
-        self.depth = depth # count f
-        self.c = self.depth + count_g(self.info)
-    
+        self.move = move
+        self.depth = depth

@@ -1,3 +1,5 @@
+from bnb import count_g
+
 # change matrix of fifteen puzzle into one dimension list
 def matrix_to_list(fifteen_puzzle):
     list_puzzle = [0 for i in range(16)]
@@ -48,3 +50,6 @@ def is_a_result(fifteen_puzzle):
         else:
             i += 1
     return same
+
+def is_lower_than(node_x, node_y):
+    return node_x.depth + count_g(node_x.root) <= node_y.depth + count_g(node_y.root)
