@@ -1,5 +1,7 @@
+from asyncio.windows_events import NULL
 import imp
 from operator import rshift
+from re import U
 from turtle import left, right
 from unittest import result
 from nodepuzzle import NodePuzzle
@@ -13,22 +15,54 @@ def count_g(fifteen_puzzle):
             cnt += 1
     return cnt
 
+def insert_into_simpul_hidup(node, simpul_hidup):
+    for i in range(len(simpul_hidup)):
+        if simpul_hidup[i].c <= node.c:
+            continue
+        else:
+            simpul_hidup.insert(i,node)
+            break
+
+def print_bnb(current_node_analyze, all_node):
+    while(current_node_analyze.parent != None):
+        print_matrix(current_node_analyze.info)
+        current_node_analyze = all_node[current_node_analyze.parent]
+
 def procedure_bnb(fifteen_puzzle):
-    simpul_expand = []
-    initial_node = NodePuzzle(fifteen_puzzle, count_g(fifteen_puzzle), 1)
-    simpul_expand.append(initial_node)
-    simpul_hidup = []
-    number = 1
-    #depth = 0
-    while not is_a_result(simpul_expand[len(simpul_expand)-1]):
-        if is_enable_to_move_up(simpul_expand[len(simpul_expand)-1]):
-            up = copy_matrix(move_right(fifteen_puzzle))   
-            up_node = NodePuzzle(up, count_g(up))        
-        if is_enable_to_move_right(simpul_expand[len(simpul_expand)-1]):
-            right = copy_matrix(move_right(fifteen_puzzle))     
-        if is_enable_to_move_down(simpul_expand[len(simpul_expand)-1]):
-            right = copy_matrix(move_down(fifteen_puzzle))        
-        if is_enable_to_move_left(simpul_expand[len(simpul_expand)-1]):
-            left = copy_matrix(move_left(fifteen_puzzle))         
-  
-        simpul_expand.append(simpul_hidup[0])
+        node_number = 0
+        all_node = []
+        simpul_e = []
+        simpul_hidup = []
+        all_node.append(NodePuzzle(node_number, fifteen_puzzle, None, 0))
+        simpul_hidup.append(NodePuzzle(node_number, fifteen_puzzle, None, 0))
+        simpul_e.append(simpul_hidup[0])
+        current_node_analyze = simpul_e[len(simpul_e)-1]
+        while (not is_a_result(current_node_analyze.info)):
+            simpul_hidup.remove(simpul_hidup[0])
+            if(is_enable_to_move_up(current_node_analyze.info)):
+                node_number += 1
+                up_node = NodePuzzle(node_number, copy_matrix(move_up(current_node_analyze.info)),current_node_analyze.node_number,current_node_analyze.depth+1)
+                all_node.append(up_node)
+                insert_into_simpul_hidup(up_node, simpul_hidup)
+            if(is_enable_to_move_right(current_node_analyze.info)):
+                node_number += 1
+                right_node = NodePuzzle(node_number, copy_matrix(move_right(current_node_analyze.info)),current_node_analyze.node_number,current_node_analyze.depth+1)
+                all_node.append(right_node)
+                insert_into_simpul_hidup(right_node, simpul_hidup)
+            if(is_enable_to_move_down(current_node_analyze.info)):
+                node_number += 1
+                down_node = NodePuzzle(node_number, copy_matrix(move_down(current_node_analyze.info)),current_node_analyze.node_number,current_node_analyze.depth+1)
+                all_node.append(down_node)
+                insert_into_simpul_hidup(right_node, simpul_hidup)
+            if(is_enable_to_move_left(current_node_analyze.info)):
+                node_number += 1
+                left_node = NodePuzzle(node_number, copy_matrix(move_left(current_node_analyze.info)),current_node_analyze.node_number,current_node_analyze.depth+1)
+                all_node.append(left_node)
+                insert_into_simpul_hidup(left_node, simpul_hidup)
+            simpul_e.append(simpul_hidup[0])
+            current_node_analyze = simpul_e[len(simpul_e)-1]
+        print_bnb(current_node_analyze, all_node)    
+
+
+
+            

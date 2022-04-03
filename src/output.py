@@ -19,5 +19,6 @@ def game_output(fifteen_puzzle):
     print(sum_of_less_than_plus_x(fifteen_puzzle)) # 3rd output in project specification
     if (not is_reachable(fifteen_puzzle)): # 4th output in project specification
         print("Unfortunately, the puzzle is unsolvable. You cannot reach the final result")
+        exit()
     else:
         procedure_bnb(fifteen_puzzle)
