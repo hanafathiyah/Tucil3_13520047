@@ -52,4 +52,4 @@ def is_a_result(fifteen_puzzle):
     return same
 
 def is_lower_than(node_x, node_y):
-    return node_x.depth + bnb.count_g(node_x.root) <= node_y.depth + bnb.count_g(node_y.root)
+    return node_x.depth + bnb.count_g(node_x.info) <= node_y.depth + bnb.count_g(node_y.info)

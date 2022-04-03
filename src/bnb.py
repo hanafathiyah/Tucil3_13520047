@@ -39,15 +39,35 @@ def get_solution(solution_found):
     return solution
 
 def procedure_bnb(fifteen_puzzle):
+
     initial_node = nodepuzzle.NodePuzzle(fifteen_puzzle)
+    
+    # utility.print_matrix(initial_node.info)
     cnt_node = 1 
 
-    live_node = node.LiveNode(lambda x,y: x.depth + count_g(x.info) <= y.depth + count_g(y.info))
+    live_node = node.LiveNode(utility.is_lower_than)
 
     solution = None
 
     live_node.add_in(initial_node)
 
+    # utility.print_matrix(live_node.liveNode[0].info) BATAS
+    ''''
+    TESTING.com harusnya aman
+    current_node = live_node.get_first()
+    if (movematrix.is_enable_to_move_up(current_node.info) and current_node.move != 'down'):
+        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='up')
+        cnt_node += 1
+        live_node.add_in(result_node)
+    
+    utility.print_matrix(live_node.liveNode[0].info)
+    utility.print_matrix(live_node.liveNode[1].info)
+
+    live_node.delete_first()
+    utility.print_matrix(live_node.liveNode[0].info)
+    '''
+    # .......-......
+    '''
     while(not live_node.is_empty()):
         current_node = live_node.get_first()
         live_node.delete_first()
@@ -77,9 +97,39 @@ def procedure_bnb(fifteen_puzzle):
             cnt_node += 1
             live_node.add_in(result_node)
     
-    array_result = get_solution(solution)
+    #array_result = get_solution(solution)
+    utility.print_matrix(solution.info)
 
+    
     for index, state in enumerate(array_result):
         print("Step", str(index+1) + ":", state.move , "-----")
         utility.print_matrix(state.info)
         print()
+    '''
+
+    current_node = live_node.get_first()
+    live_node.delete_first()
+    if (movematrix.is_enable_to_move_up(current_node.info) and current_node.move != 'down'):
+        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='up')
+        cnt_node += 1
+        live_node.add_in(result_node)
+            
+    if (movematrix.is_enable_to_move_right(current_node.info) and current_node.move != 'left'):
+        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='right')
+        cnt_node += 1
+        live_node.add_in(result_node)
+            
+    if (movematrix.is_enable_to_move_down(current_node.info) and current_node.move != 'up'):
+        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='down')
+        cnt_node += 1
+        live_node.add_in(result_node)
+            
+    if (movematrix.is_enable_to_move_left(current_node.info) and current_node.move != 'right'):
+        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='left')
+        cnt_node += 1
+        live_node.add_in(result_node)
+
+    print(len(live_node.liveNode))
+
+    for i in range(len(live_node.liveNode)):
+        print(live_node.liveNode[i].move)
