@@ -1,17 +1,16 @@
-from numpy import true_divide
-from utility import matrix_to_list, get_position_of_number, get_empty_cell_idx
+import utility
 
 # find x value
 def x_value(fifteen_puzzle):
-    if((get_empty_cell_idx(fifteen_puzzle)[0] + get_empty_cell_idx(fifteen_puzzle)[1]) % 2 == 0):
+    if((utility.get_empty_cell_idx(fifteen_puzzle)[0] + utility.get_empty_cell_idx(fifteen_puzzle)[1]) % 2 == 0):
         return 0
     else:
         return 1
 
 def less_than(number, fifteen_puzzle):
     cnt = 0
-    for i in range(get_position_of_number(number,fifteen_puzzle) + 1, 16):
-        if matrix_to_list(fifteen_puzzle)[i] < number:
+    for i in range(utility.get_position_of_number(number,fifteen_puzzle) + 1, 16):
+        if utility.matrix_to_list(fifteen_puzzle)[i] < number:
             cnt += 1
     return cnt
 
