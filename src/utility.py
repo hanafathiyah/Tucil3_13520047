@@ -38,7 +38,10 @@ def copy_matrix(fifteen_puzzle):
 def print_matrix(fifteen_puzzle):
     for i in range(4):
         for j in range(4):
-            print(fifteen_puzzle[i][j], end = " ")
+            if(fifteen_puzzle[i][j] == 16):
+                print("*", end = " ")
+            else:
+                print(fifteen_puzzle[i][j], end = " ")
         print("")
 
 def is_a_result(fifteen_puzzle):

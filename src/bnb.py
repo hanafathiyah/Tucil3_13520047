@@ -1,3 +1,4 @@
+import time
 import utility
 import node
 import nodepuzzle
@@ -41,8 +42,11 @@ def get_solution(solution_found):
 def procedure_bnb(fifteen_puzzle):
 
     initial_node = nodepuzzle.NodePuzzle(fifteen_puzzle)
-    
-    # utility.print_matrix(initial_node.info)
+
+    print("0: Inisialisasi Awal 15-Puzzle")
+    utility.print_matrix(fifteen_puzzle)
+    print()
+
     cnt_node = 1 
 
     live_node = node.LiveNode(utility.is_lower_than)
@@ -51,22 +55,7 @@ def procedure_bnb(fifteen_puzzle):
 
     live_node.add_in(initial_node)
 
-    # utility.print_matrix(live_node.liveNode[0].info) BATAS
-    ''''
-    TESTING.com harusnya aman
-    current_node = live_node.get_first()
-    if (movematrix.is_enable_to_move_up(current_node.info) and current_node.move != 'down'):
-        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='up')
-        cnt_node += 1
-        live_node.add_in(result_node)
-    
-    utility.print_matrix(live_node.liveNode[0].info)
-    utility.print_matrix(live_node.liveNode[1].info)
-
-    live_node.delete_first()
-    utility.print_matrix(live_node.liveNode[0].info)
-    '''
-    # .......-......
+    time_begin = time.process_time_ns()
 
     while(not live_node.is_empty()):
         current_node = live_node.get_first()
@@ -99,54 +88,13 @@ def procedure_bnb(fifteen_puzzle):
     
     array_result = get_solution(solution)
 
+    time_end = time.process_time_ns()
+
     for i in range(len(array_result)):
+        print(str(i+1)+": "+str(array_result[i].move))
         utility.print_matrix(array_result[i].info)
         print()
-    '''
-    for index, state in enumerate(array_result):
-        print("Step", str(index+1) + ":", state.move , "-----")
-        utility.print_matrix(state.info)
-        print()
-
-    '''
-    #
-    '''
-
-    current_node = live_node.get_first()
-    live_node.delete_first()
-    utility.print_matrix(current_node.info)
-    print()
-    if (movematrix.is_enable_to_move_up(current_node.info) and current_node.move != 'down'):
-        result_node = nodepuzzle.NodePuzzle(movematrix.move_up(current_node.info), parent=current_node,depth=current_node.depth+1,move='up')
-        cnt_node += 1
-        live_node.add_in(result_node)
-        utility.print_matrix(result_node.info)
-        print()
-
-    if (movematrix.is_enable_to_move_right(current_node.info) and current_node.move != 'left'):
-        result_node = nodepuzzle.NodePuzzle(movematrix.move_right(current_node.info), parent=current_node,depth=current_node.depth+1,move='right')
-        cnt_node += 1
-        live_node.add_in(result_node)
-        utility.print_matrix(result_node.info)  
-        print()
-
-    if (movematrix.is_enable_to_move_down(current_node.info) and current_node.move != 'up'):
-        result_node = nodepuzzle.NodePuzzle(movematrix.move_down(current_node.info), parent=current_node,depth=current_node.depth+1,move='down')
-        cnt_node += 1
-        live_node.add_in(result_node)
-        utility.print_matrix(result_node.info)
-        print()
-
-    if (movematrix.is_enable_to_move_left(current_node.info) and current_node.move != 'right'):
-        result_node = nodepuzzle.NodePuzzle(movematrix.move_left(current_node.info), parent=current_node,depth=current_node.depth+1,move='left')
-        cnt_node += 1
-        live_node.add_in(result_node)
-        utility.print_matrix(result_node.info)
-        print()
-        
-    print(len(live_node.liveNode))
-
     
-    for i in range(len(live_node.liveNode)):
-        print(live_node.liveNode[i].move, live_node.liveNode[i].depth, count_g(live_node.liveNode[i].info))
-    '''
+    print("Total node:", cnt_node)
+    print("Time spent:",(time_end - time_begin)/10000000, "ms")
+    
