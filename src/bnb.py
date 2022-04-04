@@ -1,3 +1,4 @@
+import imp
 import time
 import utility
 import node
@@ -43,7 +44,7 @@ def procedure_bnb(fifteen_puzzle):
 
     initial_node = nodepuzzle.NodePuzzle(fifteen_puzzle)
 
-    print("0: Inisialisasi Awal 15-Puzzle")
+    print("0: Initial Arrangement")
     utility.print_matrix(fifteen_puzzle)
     print()
 
@@ -91,10 +92,16 @@ def procedure_bnb(fifteen_puzzle):
     time_end = time.process_time_ns()
 
     for i in range(len(array_result)):
-        print(str(i+1)+": "+str(array_result[i].move))
+        print(str(i+1)+": Move "+"< "+str(array_result[i].move).title()+" >")
         utility.print_matrix(array_result[i].info)
         print()
     
-    print("Total node:", cnt_node)
+    print("All moves:", end = " ")
+    for i in range(len(array_result)):
+        print(str(array_result[i].move).title()[0], end = " ")
+    print()
+
+    print("Total moves:", len(array_result))
+    print("Total nodes:", cnt_node)
     print("Time spent:",(time_end - time_begin)/10000000, "ms")
     
