@@ -58,4 +58,4 @@ def is_enable_to_move_right(fifteen_puzzle):
     return utility.get_empty_cell_idx(fifteen_puzzle)[1] < 3
 
 def is_enable_to_move_left(fifteen_puzzle):
-    return utility.get_empty_cell_idx(fifteen_puzzle)[0] > 0
+    return utility.get_empty_cell_idx(fifteen_puzzle)[1] > 0
