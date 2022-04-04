@@ -9,7 +9,7 @@ def main():
     fifteen_puzzle_file_name = input("Input the 15-Puzzle's game file: ")
     fifteen_puzzle_in_file = readfile.read_file(fifteen_puzzle_file_name)
 
-    if(fifteen_puzzle_in_file == []):
+    if(fifteen_puzzle_in_file == []): # empty, file not found
         exit()
 
     fifteen_puzzle = convertfile.convert_file_to_int_matrix(fifteen_puzzle_in_file)

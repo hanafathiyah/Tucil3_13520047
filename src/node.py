@@ -1,4 +1,4 @@
-# function for 'simpul_hidup' and 'simpul expand' in bahasa
+# LiveNode = simpul hidup (in bahasa)
 
 class LiveNode:
     def __init__(self, function):

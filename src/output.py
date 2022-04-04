@@ -32,4 +32,4 @@ def game_output(fifteen_puzzle):
     else:
         print("\n> Result: The goal state is reachable from the initial state.\n")
         print("> Solution:\n") # 5th output in project specification
-        bnb.procedure_bnb(fifteen_puzzle)
+        bnb.procedure_bnb(fifteen_puzzle) # call bnb
