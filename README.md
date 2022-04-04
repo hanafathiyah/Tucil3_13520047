@@ -2,7 +2,12 @@
 Penyelesaian Persoalan 15-Puzzle dengan Algoritma Branch and Bound
 
 ## Deskripsi Singkat Program yang Dibuat
-Permainan 15-Puzzle
+Permainan 15-Puzzle dapat diselesaikan menggunakan algoritma branch and bound. Ide pengerjaannya adalah sebagai berikut.
+1. Pengecekan apakah solusi dapat dicapai atau tidak. Dalam hal ini digunakan fungsi-fungsi dalam file reachablechecker.py. Apabila total nilai kurang i ditambah dengan X bernilai genap, solusi dapat ditemukan. Apabila total nilai kurang i ditambah dengan X bernilai ganjil, solusi tidak dapat ditemukan dan menampilkan pesan kesalahan.
+2. Melakukan iterasi secara bertahap hingga tidak terdapat elemen di dalam simpul hidup. Selain itu, apabila ditemukan node berupa solusi, iterasi dihentikan.
+3. Iterasi dilakukan dalam file bnb.py dengan move up, right, down, left dan menambahkan simpul-simpul tersebut ke dalam simpul hidup sesuai dengan urutannya.
+4. Simpul expand didapatkan dari indeks pertama simpul hidup
+5. Pengecekan apakah simpul expand merupakan solusi? Jika iya hentikan pencarian. Jika tidak lanjutkan sampai ditemukan node berupa goal_state
 
 ## Requirement Program dan Instalasi Module/Package yang Diperlukan
 ### Requirement Program
