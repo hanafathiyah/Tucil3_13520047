@@ -19,11 +19,17 @@ def game_output(fifteen_puzzle):
     print("> Value of X =", reachablechecker.x_value(fifteen_puzzle))
     print("")
     print("> Sum of all lower-numbered(i) after add by X = ",end = "")
-    print(reachablechecker.sum_of_less_than_plus_x(fifteen_puzzle)) # 3rd output in project specification
+    print(reachablechecker.sum_of_less_than_plus_x(fifteen_puzzle),end = " ") # 3rd output in project specification
+   
+    if(reachablechecker.sum_of_less_than_plus_x(fifteen_puzzle) % 2 == 0):
+        print("(even)")
+    else:
+        print("(odd)")
+
     if (not reachablechecker.is_reachable(fifteen_puzzle)): # 4th output in project specification
         print("\n> Result: The goal state is not reachable from the initial state.\n")
         exit()
     else:
         print("\n> Result: The goal state is reachable from the initial state.\n")
-        print("> Solution:\n")
+        print("> Solution:\n") # 5th output in project specification
         bnb.procedure_bnb(fifteen_puzzle)

@@ -102,6 +102,6 @@ def procedure_bnb(fifteen_puzzle):
     print()
 
     print("Total moves:", len(array_result))
-    print("Total nodes:", cnt_node)
-    print("Time spent:",(time_end - time_begin)/10000000, "ms")
+    print("Time spent:",(time_end - time_begin)/10000000, "ms") # 6th output in project specification
+    print("Total nodes:", cnt_node) # 7th output in project specification
     
