@@ -9,8 +9,7 @@ Permainan 15-Puzzle dapat diselesaikan menggunakan algoritma branch and bound. I
 4. Simpul expand didapatkan dari indeks pertama simpul hidup
 5. Pengecekan apakah simpul expand merupakan solusi? Jika iya hentikan pencarian. Jika tidak lanjutkan sampai ditemukan node berupa goal_state
 
-## Requirement Program dan Instalasi Module/Package yang Diperlukan
-### Requirement Program
+## Requirement Program 
 1. Python (Lakukan instalasi melalui https://www.python.org/ atau sudo apt install python3)
 
 ## Cara Menggunakan Program
